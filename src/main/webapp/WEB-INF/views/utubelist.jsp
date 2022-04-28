@@ -56,7 +56,7 @@
 		videoList.splice(0, videoList.length); // 계속 push 되는것 방지하기 위해 초기화
 		
 		const xhr = new XMLHttpRequest();
-		let schWord = c_sch.value.trim();
+		let schWord = c_sch.value;
 		let url = "<%=request.getContextPath()%>/bypass/utube?schWord=" + schWord;
 		    xhr.open("get", url, true);
 		    xhr.onreadystatechange = function() {
