@@ -104,7 +104,7 @@ public class ByPassController {
 		return json;
 	}
 	
-	@GetMapping("/utubeTitle")
+	@GetMapping(value="/utubeTitle",produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String getUtubeTitle(String schCode) throws Exception {
 		String url = "https://www.youtube.com/watch?v=" + schCode;
