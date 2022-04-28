@@ -32,6 +32,7 @@
 					videoVO.title = title;
 					listArr.push(videoVO);
 // 					console.log(title);
+
 console.log(p_code, title);
 		        }
 	        }
