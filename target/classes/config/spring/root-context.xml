@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--namespaces의 mybatis체크 하면 source에 들어온다.  -->
+	
+	<!--히카리 - 커넥션 풀을 만들어줌
+		마이바티스 - 하나씩 뽑아서 사용
+	  -->
+	  
+ 	<!-- 플렉서블하게 상황에 따라 조절이 쉬움 -->
+	<import resource="database-context.xml"/>
+</beans>
