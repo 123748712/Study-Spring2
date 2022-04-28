@@ -31,9 +31,7 @@
 					videoVO.code = p_code;
 					videoVO.title = title;
 					listArr.push(videoVO);
-// 					console.log(title);
-
-console.log(p_code, title);
+					console.log(p_code, title);
 		        }
 	        }
 	    xhr.send();
