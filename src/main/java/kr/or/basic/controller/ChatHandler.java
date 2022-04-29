@@ -13,8 +13,8 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
-@Slf4j
+@Component 
+@Slf4j		 // websocket:mapping handler과 동일하게 해야함
 public class ChatHandler extends TextWebSocketHandler implements WebSocketConfigurer {
 	// 접속한 session을 저장하기 위해 static List 선언
 	private static List<WebSocketSession> list = new ArrayList<WebSocketSession>();

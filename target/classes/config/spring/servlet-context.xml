@@ -17,6 +17,7 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/img/**" location="/resources/img/" />
+	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,16 +39,30 @@
 	 <!-- multipart는 id 맘대로 짓지 말고 대체로 쓰는 것을 사용한다.-"multipartResolver"  -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</beans:bean>
+	
+<!-- 	<beans:bean id="jungsun" class="kr.or.basic.domain.JungSun"> -->
+<!-- 		<beans:property name="jamba" ref="jamba"/>		    -->
+<!-- 	</beans:bean>										    -->
+	
+	<!--property: name:jamba라고 쓰면 setJamba 메소드를 부른다 / aaa라 쓰면 setAaa를 부름 // ref는 메소드 안에 매개변수를 말함-->
+<!-- 	<beans:bean id="jungsun2" class="kr.or.basic.domain.JungSun2"> 아이디 값을 주지 않으면 클래스 이름의 앞글자를 소문자로 변환해 자동 부여함 -->
+<!-- 		<beans:property name="jamba" ref="jamba"/>		   init-method => 생성되자마자 실행할 메소드 -->
+<!-- 	</beans:bean>										   destory-method => 소멸될 때 실행될 메소드지만 가비지컬렉터가 자동소멸시킬때가 많음 -->
+<!-- 														   scope => singleton(default) - 하나만 가지고 있겠다. prototype => 여러개 가능 -->
+<!-- 														   page - page 이동시 소멸, Request - response될시 소멸, session - 사용자가 로그아웃, 설정된 시간이 지나면 소멸(개인소유) -->
+<!-- 														   Application - 프로그램 종료시 소멸됨, 모두가 공유 -->
 
-	 <!--property: name:jamba라고 쓰면 setJamba 메소드를 부른다 / aaa라 쓰면 setAaa를 부름 // ref는 메소드 안에 매개변수를 말함-->
-	<beans:bean id="jungsun" class="kr.or.basic.domain.JungSun">
-		<beans:property name="jamba" ref="jamba"/>
-	</beans:bean>
+		
+	
 	
 	
 	<!-- jamba를 jangsun에게 넘겨주고 싶을때 생성자를 넘겨준다. -->
 	<beans:bean id="jamba" class="kr.or.basic.domain.Jamba" >
 		<beans:property name="color" value="pink"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\workspace-sts-3.9.14\Basic\src\main\webapp\resources\ckUpload"/>
 	</beans:bean>
 	
 	<!--<annotation-driven />와 component-scan : 이 디렉토리 밑에 있는 어노테이션들을 모두 읽어들인다.  -->
