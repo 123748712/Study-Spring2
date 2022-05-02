@@ -25,14 +25,22 @@ public class CkUploadController {
 	@ResponseBody
 	public String ckUpload2(HttpServletRequest req, HttpServletResponse res, MultipartFile upload) throws Exception {
 		
-		log.info(upload.getOriginalFilename());
+//		log.info(upload.getOriginalFilename());
+		
+		// 이클립스가 실제로 사용하는 디렉토리
+		// 이클립스가 실제 사용하는 임시 디렉토리에서 우리가 임의적으로 만든 디렉토리로 전송하는 단계에서 파일 Preview와 Upload 문제 발생
+//		String realPath = "webapp/resources : "+req.getServletContext().getRealPath("/resources/ckUpload");
+		String realPath = req.getServletContext().getRealPath("/resources/ckUpload"); // mklink /D 명령어 이용해 바로가기 만듬
+
+//		log.info("webapp/WEB-INF : "+req.getServletContext().getRealPath("/resources/WEB-INF"));
 		
 		UUID uid = UUID.randomUUID();
 				
 		String fileName = upload.getOriginalFilename();
 		log.info("filename >> " + fileName);
 		
-		String ckUploadPath = uploadPath + "/" + uid + "_" + fileName;
+//		String ckUploadPath = uploadPath + "/" + uid + "_" + fileName;
+		String ckUploadPath = realPath + "/" + uid + "_" + fileName;
 		log.info("ckUploadPath >> " + ckUploadPath);
 		
 		// 이 구간에서 시간이 지체되어 업로드가 정상적으로 이루어지지 않음. 이클립스 버퍼링도 문제
@@ -41,6 +49,9 @@ public class CkUploadController {
 	    // ckeditor에 파일 경로 알림
 		String callback = req.getParameter("CKEditorFuncNum"); // filebrowserUploadMethod가 없으면 null return
 		log.info("callback >> " + callback);
+//		String fileUrl = req.getContextPath() + "/ckUpload/" + uid + "_" + fileName;
+		
+		// 실제 이클립스가 파일을 먼저 Upload 하는 폴더
 		String fileUrl = req.getContextPath() + "/ckUpload/" + uid + "_" + fileName;
 		log.info("fileUrl >> " + fileUrl);
         /* CKEditor가 원하는 스크립트 문자열을 리턴(아님말공)  */
