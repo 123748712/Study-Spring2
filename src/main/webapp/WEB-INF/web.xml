@@ -24,6 +24,11 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:config/spring/servlet-context.xml</param-value>
 		</init-param>
+		<!-- Tomcat이 Exception을 던지도록 설정. 이 작업을 하지 않으면 맵핑 URL이 없다고함 -->
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 
 		<!--서블릿3.0부터 Multipart 자체 지원 -->

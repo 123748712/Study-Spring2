@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,8 +43,9 @@ public class HomeController {
 	private String driverName;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, @Value("bbb") String aaa) { // 매개변수 값을 줄때도 사용, @Value(123) int aaa
-		
+	public String home(Locale locale, Model model, @Value("bbb") String aaa, String js) { // 매개변수 값을 줄때도 사용, @Value(123) int aaa
+																						  // get방식이기 때문에 쿼리스트링으로 값을 넘겨야한다. 넘기지 않으면 null 에러
+		log.info("chk > " + js.substring(0)); // NullPointerException
 		log.info("driverClassName >> " + driverName);
 		log.info("확인 >> " + aaa);
 		
