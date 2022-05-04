@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,5 +62,25 @@ public class CkUploadController {
 				+ "</script>";
 		
 		return scriptStr;
+	}
+	
+	@PostMapping(value = "/gUpload", produces = "text/html;charset=utf-8") // jQuery에선 파일을 보낼때 text/html 기입해줘야함
+	@ResponseBody
+	public String gUpload(HttpServletRequest req, HttpServletResponse res, MultipartFile upload) throws Exception {
+		
+		String realPath = req.getServletContext().getRealPath("/resources/ckUpload");
+
+		
+		UUID uid = UUID.randomUUID();
+				
+		String fileName = upload.getOriginalFilename();
+		String ckUploadPath = realPath + "/" + uid + "_" + fileName;
+	    upload.transferTo(new File(ckUploadPath));
+		
+		String fileUrl = req.getContextPath() + "/ckUpload/" + uid + "_" + fileName;
+		log.info("fileUrl >> " + fileUrl);
+		
+		// CkEditor가 아닌 경우 파일의 경로만 리턴
+		return fileUrl;
 	}
 }
