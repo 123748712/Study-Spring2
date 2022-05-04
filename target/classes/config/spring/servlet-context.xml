@@ -67,6 +67,14 @@
 	
 	<!--<annotation-driven />와 component-scan : 이 디렉토리 밑에 있는 어노테이션들을 모두 읽어들인다.  -->
 	
+	<!-- 인터셉터 등록 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/login"/> <!-- 요청 url -->
+			<beans:bean class="kr.or.basic.interceptor.MyFirstInterceptor"/> <!-- 요청 url이 실행되면 class가 중간에 실행 -->
+		</interceptor>
+	</interceptors>
+	
 	<!-- 설정파일 읽어오기 -->
 	<beans:import resource="websocket-context.xml/"/>
 	

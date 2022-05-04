@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@WebFilter(urlPatterns = "/*") // 필터의 순서가 보이지 않아 사용하지 않는다.
+//@WebFilter(urlPatterns = "/*") // 필터의 순서가 보이지 않아 사용하지 않는다.
 public class MySecondFilter implements Filter {
 
 	@Override
