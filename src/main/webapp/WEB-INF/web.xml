@@ -67,4 +67,13 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>myFirstFilter</filter-name>
+		<filter-class>kr.or.basic.filter.MyFirstFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>myFirstFilter</filter-name>
+		<url-pattern>/*</url-pattern> <!-- 설정한 url에 myFirstFilter 실행 -->
+	</filter-mapping>
 </web-app>
